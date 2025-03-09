@@ -1,0 +1,564 @@
+/* @font-face {
+    font-family: 'Montserrat';
+    src:url('fonts/Montserrat-Regular.ttf') format('truetype'),
+        url('fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+} */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+    color: #fff;
+}
+
+*::selection{
+    background-color: #fff;
+    color: #95c11e; 
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat',sans-serif;
+}
+
+body::-webkit-scrollbar{
+    display: block;
+    width: 10px;
+    background-color: #000;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: #95c11e;
+    border-radius: 50px;
+}
+
+#nav {
+    padding: 25px 100px 25px 100px;
+    display: flex;
+    height: 120px;
+    width: 100%;
+    align-items: center;
+    /* justify-content: space-between;     */
+    position: fixed;
+    z-index: 99;
+    
+}
+
+.nav {
+    display: flex;
+    width: 75%;
+    gap: 25px; 
+    align-items: center;
+    justify-content: flex-start;
+    /* justify-content: space-evenly; */
+}
+
+#nav img {
+    height: 62px;
+    padding-right: 15px;
+}
+
+#nav h4 {
+    text-transform: uppercase;
+    font-size:0.9em;
+    font-weight:500;
+    letter-spacing: .01em;
+    white-space: nowrap;
+}
+
+.nbtn:hover {
+    background-color: #95c11e;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    opacity:0.9;
+    z-index: -1;
+}
+
+#main{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.36);
+
+}
+
+#cursor {
+    height: 20px;
+    width: 20px;
+    background-color: #95c11e;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 99;
+}
+
+#cursor-blur {
+    height: 400px;
+    width: 400px;
+    background-color:rgba(164, 212, 34, 0.22);
+    border-radius: 50%;
+    position: fixed;
+    filter: blur(50px);
+    z-index: 9;
+}
+
+#page1{
+    height: 100vh;
+    weight: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    text-align: center;   
+    z-index: 10;
+}
+
+#page1 h1{
+    font-size: 5.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#page1 h1::before{
+    content: "Eat. Drink. Play.";
+    position: absolute;
+    color: #000;
+    top: -4px;
+    left: -4px;
+    -webkit-text-stroke:1.5px #95c11e;
+    z-index: -1;
+}
+
+#page1 h2 {
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#page1 p {
+    font-size: 17px;
+    font-weight: 500;
+    width:42%;
+    line-height: 1.375;    
+}
+
+#page1 #arrow{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid #95c11e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    left: -2%;
+    bottom: 1%;
+    transition: all ease 0.5s;
+}
+
+#page1 #arrow i{
+    font-size: 50px;
+    font-weight: 100;
+}
+
+#page1 #arrow:hover{
+    scale: 0.4;
+    background-color: #95c11e;
+}
+
+#page2{
+    min-height: 200vh;  /*we use vh instead of % because we didn't give any height to parent element "main"*/
+    width: 100%;
+    z-index: 10;
+}
+
+#scroller {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+#scroller::-webkit-scrollbar {
+    display: none;
+}
+
+#scroller-in {
+    display:inline-block;
+    white-space: nowrap;  
+    animation-name: scroll;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;  
+}
+
+
+#scroller h4{
+    display: inline-block;
+    font-size: 4.5rem;
+    font-weight: 1000;
+    letter-spacing:0.01em;
+    font-family: sans-serif;
+    margin-right: 10px;
+    color: #000;
+    transition: all linear 0.4s;
+    -webkit-text-stroke: 1.5px #f7fce9;
+    text-transform: uppercase;
+}
+
+#scroller h4:hover{
+    color: #95c11e;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+#about-us {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    margin: 50px 0;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    justify-content: space-evenly;
+    object-fit: cover;
+}
+
+#about-us img {
+    height: 140px;
+    width: 140px;
+    margin-top: 40px;
+    border-radius: 10px;
+    object-fit: cover; 
+    align-items: center;
+}
+
+#about-us-in {
+    text-align: center;
+    width: 50%;
+}
+
+#about-us-in h3{
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+#about-us-in p{
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+#cards-container{
+    /* background-color: red; */
+    position: relative;
+    height: 75vh;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    gap: 58px;
+    margin: 100px 0;
+
+}
+
+.card {
+    height:95%;
+    width:26%;
+    /* background-color:blue; */
+    border: 1px none black;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: all ease 0.5s;
+    z-index: 12;
+}
+
+.emage{
+    height: 150px;
+    width: 210px;
+    object-fit: cover;
+    position: absolute;
+    z-index: 11;
+    top: -40px;
+    left: 35px;
+    
+}
+
+.card-txt {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1.66rem;
+    font-weight: 800;
+    color: rgb(240, 237, 237);
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    filter: blur(0.51px);
+}
+
+#card1 {
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer-1024x682.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#card2 {
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/hero-4-1024x1024.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#card3 {
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-lessons-1024x682.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+
+.overlay{
+    height: 100%;
+    width: 100%;
+    background-color: #95c11e;
+    padding:130px 30px 30px;
+    border: 1px none black;
+    border-radius: 15px;
+    opacity: 0;
+    transition: all ease 0.8s;
+}
+
+.overlay h4{
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.overlay p{
+    color: #000;
+    font-size: 18px;
+}
+
+.card:hover .overlay{
+    opacity: 1;
+}
+
+.card:hover{
+    transform: rotate3d(-1,1,0,15deg);
+}
+
+#green-div{
+    height: 28vh;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:linear-gradient(to left bottom, #119f3a, #ace022);
+    position: relative;
+    z-index: 10;
+}
+
+#green-div h4{
+    width: 45%;
+    font-size: 20px;
+    font-weight: 800;
+    text-align:center;
+    text-transform: uppercase;
+    line-height: 30px;
+    color:black;
+}
+
+#green-div img{
+    height:100%;
+    object-fit: cover;
+    width:14%;
+}
+
+#page3 {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#page3>p{
+    font-size: 21px;
+    line-height: 1.35;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    font-weight: 800;
+    width: 65%;
+    text-align: center;
+}
+
+#page3 img{
+    position: absolute;
+    height: 40px;
+}
+
+#page3 #colon1{
+    top: 25%;
+    left: 10%;
+}
+
+#page3 #colon2{
+    bottom: 25%;
+    right: 10%;
+}
+
+#page4{
+    height: 35vh;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 25px;
+    position: relative;
+}
+
+#page4 h1{
+    top: -20%;
+    font-size: 4.5rem;
+    font-weight: 900;
+    white-space: nowrap;
+    font-family: sans-serif;
+    color: #000;
+    transition: all linear 0.4s;
+    -webkit-text-stroke: 1px #f7fce9;
+    text-transform: uppercase;
+    position: absolute;
+}
+
+
+.elem{
+    height: 68%;
+    width: 27%;
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+}
+
+.elem h2{
+    height: 100%;
+    width: 100%;
+    background-color: #95c11e;
+    color:#000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+    position: absolute;
+    z-index: 10;
+    transition: all ease 0.8s;
+}
+
+.elem img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    scale: 1.1;
+    transition: all ease 0.8s;
+}
+
+.elem:hover h2{
+    color: #fff;
+    background-color: transparent;
+}
+
+.elem:hover img{
+    scale: 1;
+}
+
+#footer{
+    height: 55vh;
+    width: 100%;
+    background: linear-gradient(to left bottom, #119f3a, #ace022);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 120px;
+    padding: 0 90px;
+}
+
+#footer>img{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+}
+
+#f1 img{
+    height: 80px;
+}
+
+#f1,#f2,#f3,#f4{
+    width: fit-content;
+    position: relative;
+    z-index: 99;
+}
+
+#f2 h3{
+    font-size: 20px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 800;
+    margin-bottom: 8px;
+    transition: all ease 0.5s;
+}
+
+#f3 h3{
+    font-size: 20px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 800;
+    margin-bottom: 8px;
+    transition: all ease 0.5s;
+}
+
+#f4 h4{
+    font-size: 17px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color:#000;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+#f4 span{
+    font-size: 17px;
+    font-weight: 700;
+    padding-top: 12px;
+    color:#000;
+    transition: all ease 0.5s;
+}
+
+#f2 h3:hover{
+    color: #fff;
+}#f3 h3:hover{
+    color: #fff;
+}#f4 span:hover{
+    color: #fff;
+}
